@@ -3,12 +3,12 @@ class Magicadventure < Formula
   homepage "https://github.com/MaizerGomes/magicadvanture"
   version "6.0"
   url "https://github.com/MaizerGomes/magicadvanture/releases/download/v6.0/magicadventure-mac-arm"
-  sha256 "054ca7f5f6bf9c530c077f27a5a98bc96221c31bb76dec3340fcfc4f13be7a94"
+  sha256 "677553c7cb54796d27d56fe21a23ef0ce767e44c6e6501eff45b5f21ce10c062"
 
   on_macos do
     if Hardware::CPU.intel?
       url "https://github.com/MaizerGomes/magicadvanture/releases/download/v6.0/magicadventure-mac-64"
-      sha256 "1504cd888a017fc9ecf35fe0956b078004e68f5b9b3fc7dcee03beba16724e75"
+      sha256 "48bf41d17c85828575255eb23ce5bb76fa8a6d83b76eff61422cb153b1cdb25c"
     end
   end
 
