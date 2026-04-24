@@ -14,18 +14,11 @@ class Magicadventure < Formula
   end
 
   def install
-    # Find any file in staging that is executable
-    # The actual filename from GitHub is mac-arm or mac-64
-    found = nil
-    Dir.chdir(staging) do
-      found = Dir["*"].find { |f| File.executable?(f) && !File.directory?(f) }
-    end
-    
-    if found
-      # Install with explicit new name
-      bin.install found => "magicadventure"
-    else
-      raise "No executable found in staging"
-    end
+    binary = Dir["magicadventure-*"]
+      .reject { |path| File.directory?(path) }
+      .first
+    raise "magicadventure binary not found in buildpath" unless binary
+
+    bin.install binary => "magicadventure"
   end
 end
