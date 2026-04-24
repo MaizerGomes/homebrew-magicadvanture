@@ -13,7 +13,7 @@ class Magicadventure < Formula
   end
 
   def install
-    bin.install "magicadventure"
+    bin.install "magicadventure-mac-arm" => "magicadventure"
   end
 
   test do
