@@ -1,8 +1,8 @@
 class Magicadventure < Formula
-  desc "A terminal RPG"
+  desc "A terminal RPG with slot-based saves, turn-based combat, and optional multiplayer"
   homepage "https://github.com/MaizerGomes/magicadvanture"
   version "7.3"
-  
+
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/MaizerGomes/magicadvanture/releases/download/v7.3/magicadventure-mac-arm"
