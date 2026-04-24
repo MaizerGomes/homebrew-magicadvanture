@@ -14,6 +14,7 @@ class Magicadventure < Formula
 
   def install
     bin.install "magicadventure-mac-arm" => "magicadventure"
+    chmod +x, bin/"magicadventure"
   end
 
   test do
