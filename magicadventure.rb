@@ -1,14 +1,14 @@
 class Magicadventure < Formula
   desc "A terminal RPG with slot-based saves, turn-based combat, and optional multiplayer"
   homepage "https://github.com/MaizerGomes/magicadvanture"
-  version "7.0"
-  url "https://github.com/MaizerGomes/magicadvanture/releases/download/v6.0/magicadventure-mac-arm"
-  sha256 "c1a9c59ad18d263ece16637a2c86c7100baf918e627bc496b1b54903f841e98e"
+  version "7.1"
+  url "https://github.com/MaizerGomes/magicadvanture/releases/download/v7.1/magicadventure-mac-arm"
+  sha256 "b74f623affebc913a72b63a9e7859be57d04e99399e112c1c9bd8cbd55094e3e"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/MaizerGomes/magicadvanture/releases/download/v6.0/magicadventure-mac-64"
-      sha256 "8794f09783a3051c6edaafe4cf29dd311a75944fb3ce693174ba3d0e4e1b9794"
+      url "https://github.com/MaizerGomes/magicadvanture/releases/download/v7.1/magicadventure-mac-64"
+      sha256 "2cae16a21cf9b46a47bdd78d7672c42549f8a28b3e87e1613accf278e884525a"
     end
   end
 
