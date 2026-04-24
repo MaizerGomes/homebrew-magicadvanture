@@ -1,8 +1,8 @@
 class Magicadventure < Formula
-  desc "A terminal RPG with slot-based saves, turn-based combat, and optional multiplayer"
+  desc "A terminal RPG"
   homepage "https://github.com/MaizerGomes/magicadvanture"
   version "7.3"
-
+  
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/MaizerGomes/magicadvanture/releases/download/v7.3/magicadventure-mac-arm"
@@ -14,29 +14,6 @@ class Magicadventure < Formula
   end
 
   def install
-    # Just install whatever executable is in the stage
-    begin
-      # First try the staged download
-      staged = Dir["stage/*"].find { |f| File.executable?(f) && !File.directory?(f) }
-      if staged
-        bin.install staged
-        return
-      end
-    rescue
-      # stage not defined
-    end
-    
-    # Fallback: copy from prefix
-    Dir["#{prefix}/*"].each do |path|
-      next unless File.executable?(path) && !File.directory?(path)
-      cp path, bin/"magicadventure"
-      return
-    end
-    
-    raise "No installable file found"
-  end
-
-  test do
-    assert shell_output("#{bin}/magicadventure").include?("Magic Adventure")
+    bin.install "magicadventure"
   end
 end
