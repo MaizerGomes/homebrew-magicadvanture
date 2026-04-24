@@ -14,23 +14,26 @@ class Magicadventure < Formula
   end
 
   def install
-    # Use stage method to get staging directory
-    st = self.class.instance_variable_get(:@stage) rescue nil
-    if st.nil?
-      # Try alternative - download goes to #{prefix}
-      Dir.chdir(prefix) { Dir["*"] }.each do |f|
-        if File.executable?(f) && !File.directory?(f)
-          bin.install f
-          return
-        end
-      }
-    else
-      Dir["#{st}/*"].reject { |f| File.directory?(f) }.each do |f|
-        bin.install f
+    # Just install whatever executable is in the stage
+    begin
+      # First try the staged download
+      staged = Dir["stage/*"].find { |f| File.executable?(f) && !File.directory?(f) }
+      if staged
+        bin.install staged
         return
       end
+    rescue
+      # stage not defined
     end
-    raise "No executable found"
+    
+    # Fallback: copy from prefix
+    Dir["#{prefix}/*"].each do |path|
+      next unless File.executable?(path) && !File.directory?(path)
+      cp path, bin/"magicadventure"
+      return
+    end
+    
+    raise "No installable file found"
   end
 
   test do
