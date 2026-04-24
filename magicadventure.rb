@@ -1,7 +1,7 @@
 class Magicadventure < Formula
   desc "A terminal RPG with slot-based saves, turn-based combat, and optional multiplayer"
   homepage "https://github.com/MaizerGomes/magicadvanture"
-  version "6.0"
+  version "7.0"
   url "https://github.com/MaizerGomes/magicadvanture/releases/download/v6.0/magicadventure-mac-arm"
   sha256 "c1a9c59ad18d263ece16637a2c86c7100baf918e627bc496b1b54903f841e98e"
 
@@ -14,7 +14,6 @@ class Magicadventure < Formula
 
   def install
     bin.install "magicadventure-mac-arm" => "magicadventure"
-    chmod +x, bin/"magicadventure"
   end
 
   test do
