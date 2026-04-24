@@ -14,11 +14,23 @@ class Magicadventure < Formula
   end
 
   def install
-    staging_files = Dir["#{staging}/*"].reject { |f| File.directory?(f) }
-    if staging_files.empty?
-      raise "No files found in staging"
+    # Use stage method to get staging directory
+    st = self.class.instance_variable_get(:@stage) rescue nil
+    if st.nil?
+      # Try alternative - download goes to #{prefix}
+      Dir.chdir(prefix) { Dir["*"] }.each do |f|
+        if File.executable?(f) && !File.directory?(f)
+          bin.install f
+          return
+        end
+      }
+    else
+      Dir["#{st}/*"].reject { |f| File.directory?(f) }.each do |f|
+        bin.install f
+        return
+      end
     end
-    bin.install staging_files.first
+    raise "No executable found"
   end
 
   test do
